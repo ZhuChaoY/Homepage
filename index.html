@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chaoyu Zhu Homepage</title>
+<meta name="description" content="Chaoyu Zhu (朱超宇) — biomedical informatics researcher working on medical knowledge graphs, multimodal data fusion, and AI-driven drug discovery." />
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f8fa;
+    --bg-soft2:#eef2f6;
+    --text:#1f2933;
+    --text-soft:#52606d;
+    --text-mute:#7b8794;
+    --accent:#1f6feb;
+    --accent-soft:#e7f0ff;
+    --border:#e4e9ee;
+    --nav-bg:rgba(255,255,255,.82);
+    --shadow:0 1px 3px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);
+    --maxw:920px;
+  }
+  html.theme-dark{
+    --bg:#0d1117;
+    --bg-soft:#161b22;
+    --bg-soft2:#1c2230;
+    --text:#e6edf3;
+    --text-soft:#aeb9c4;
+    --text-mute:#8b949e;
+    --accent:#4c9bff;
+    --accent-soft:#15233a;
+    --border:#2a313c;
+    --nav-bg:rgba(13,17,23,.85);
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    transition:background .2s ease,color .2s ease;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  /* Nav */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--nav-bg);
+    backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--border);
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:flex-start;height:56px;gap:18px}
+  .nav-brand{font-weight:700;letter-spacing:.2px;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nav-links{display:flex;gap:30px;font-size:14.5px}
+  .nav-links a{color:var(--text-soft)}
+  .nav-links a:hover{color:var(--accent);text-decoration:none}
+  .nav-controls{display:flex;gap:8px;align-items:center;margin-left:auto}
+  .nav-updated{font-size:11.5px;color:var(--text-mute);white-space:nowrap;border-left:1px solid var(--border);padding-left:12px}
+  .toggle{
+    font:inherit;font-size:12.5px;cursor:pointer;padding:5px 11px;
+    border:1px solid var(--border);border-radius:999px;
+    background:var(--bg);color:var(--text-soft);transition:all .15s ease;
+  }
+  .toggle:hover{color:var(--accent);border-color:var(--accent-soft);background:var(--accent-soft);text-decoration:none}
+
+  /* Hero */
+  .hero{padding:54px 0 30px;display:flex;gap:34px;align-items:flex-start;flex-wrap:wrap}
+  .avatar{
+    width:128px;height:128px;border-radius:50%;flex:0 0 auto;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#dbeafe,#bcd4f6);
+    display:flex;align-items:center;justify-content:center;
+    color:#1f6feb;font-weight:800;font-size:40px;letter-spacing:1px;
+    border:1px solid var(--border);box-shadow:var(--shadow);
+  }
+  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .hero h1{margin:0 0 6px;font-size:32px;line-height:1.2}
+  .hero .role{font-size:17px;color:var(--text-soft);margin:0 0 4px}
+  .hero .aff{font-size:15px;color:var(--text-mute);margin:0}
+  .hero .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .hero .tag{font-size:12.5px;color:var(--text-soft);background:var(--bg-soft);border:1px solid var(--border);border-radius:999px;padding:3px 11px;transition:background .2s ease,border-color .2s ease}
+
+  /* Contact */
+  .contact-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;flex:1 1 100%}
+  .contact-card{flex:1 1 130px;min-width:130px;background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;padding:11px 14px;transition:background .2s ease,border-color .2s ease}
+  .contact-card .k{font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:11px;color:var(--text-mute);text-transform:uppercase;letter-spacing:.5px}
+  .contact-card .v{font-size:14px;margin-top:3px;word-break:break-word}
+
+  /* Sections */
+  section{padding:30px 0;border-top:1px solid var(--border);scroll-margin-top:64px}
+  section:first-of-type{border-top:none}
+  h2.sec{font-size:20px;margin:0 0 18px;display:flex;align-items:center;gap:10px}
+  h2.sec::before{content:"";width:5px;height:20px;border-radius:3px;background:var(--accent);display:inline-block}
+
+  /* Stats */
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin:4px 0 22px;justify-content:center}
+  .stat{
+    flex:1 1 150px;background:var(--bg-soft);border:1px solid var(--border);
+    border-radius:14px;padding:16px 18px;text-align:center;transition:background .2s ease,border-color .2s ease;
+  }
+  .stat .num{font-size:26px;font-weight:800;color:var(--accent)}
+  .stat .lbl{font-size:13px;color:var(--text-mute);margin-top:2px}
+
+  /* Publications */
+  .pub{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
+  .pub:last-child{border-bottom:none}
+  .pub .yr{flex:0 0 56px;font-weight:700;color:var(--text-mute);font-size:15px;padding-top:2px}
+  .pub .body{flex:1}
+  .pub .title{font-weight:600;font-size:16px;color:var(--text);margin:0 0 4px;text-align:justify}
+  .pub .title a{color:inherit}
+  .pub .title a:hover{text-decoration:underline}
+  .pub .authors{font-size:14px;color:var(--text-soft);margin:0 0 6px}
+  .pub .authors .me{color:var(--accent);font-weight:700}
+  .pub .meta{font-size:13px;color:var(--text-mute);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .badge{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px}
+  .badge.first{background:#fff4e5;color:#b25e09;border:1px solid #f3d9b1}
+  .badge.review{background:#eef2f6;color:#52606d;border:1px solid #dde3ea}
+  .badge.forth{background:#f3e8ff;color:#7c3aed;border:1px solid #e9d5ff}
+  .badge.if{background:#f3f7ff;color:#2b5fa6;border:1px solid #d9e6fb}
+  .badge.cite{background:#f1faf3;color:#20794a;border:1px solid #cdeede}
+  .badge.pmid{background:var(--bg-soft2);color:var(--text-soft);border:1px solid var(--border);text-decoration:none}
+  .badge.pmid:hover{text-decoration:underline}
+  .pub .links{margin-top:8px;font-size:13px;color:var(--text-mute)}
+  .pub .links a{font-weight:600}
+
+  /* Education */
+  .edu{display:flex;gap:16px;align-items:flex-start;padding:14px 0}
+  .edu .school-logo{position:relative;flex:0 0 auto;width:46px;height:46px;border-radius:11px;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;letter-spacing:.3px;border:1px solid var(--border)}
+  .edu .school-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .edu .yr{flex:0 0 124px;font-weight:700;color:var(--text-mute);font-size:14.5px;white-space:nowrap;padding-top:2px}
+  .edu .body{flex:1}
+  .edu .deg{font-weight:600;font-size:15.5px}
+  .edu .inst{font-size:14px;color:var(--text-soft)}
+
+  footer{margin-top:8px;padding:22px 0 34px;border-top:1px solid var(--border);font-size:13px;color:var(--text-mute);text-align:center}
+
+  @media (max-width:600px){
+    .hero h1{font-size:26px}
+    .nav-links{display:none}
+    .pub .yr{flex-basis:44px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <nav class="nav-links">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#education" data-i18n="nav.education">Education</a>
+      <a href="#publications" data-i18n="nav.publications">Publications</a>
+    </nav>
+    <span class="nav-updated"><span data-i18n="nav.updated">Last updated: </span><span id="updated"></span></span>
+    <div class="nav-controls">
+      <button class="toggle" id="langToggle" type="button" aria-label="Toggle language">中文</button>
+      <button class="toggle" id="themeToggle" type="button" aria-label="Toggle theme">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO + CONTACT -->
+  <section class="hero" id="about" style="border-top:none">
+    <div class="avatar"><span>CZ</span><img src="Figures/Profile photo.jpg" alt="Chaoyu Zhu" onerror="this.remove()" /></div>
+    <div>
+      <h1>Chaoyu Zhu, Ph.D. <span style="font-size:18px;color:var(--text-mute);font-weight:500">朱超宇</span></h1>
+      <p class="role" data-i18n="hero.role">Researcher in Biomedical Informatics &amp; AI for Microbiomics</p>
+      <p class="aff" data-i18n="hero.aff">Intelligent Medicine, Ph.D. &amp; Postdoc, Fudan University</p>
+      <div class="tags"><span class="tag" data-i18n="hero.tag1">Atheist</span><span class="tag" data-i18n="hero.tag2">Immune to inspirational quotes</span><span class="tag" data-i18n="hero.tag3">Amateur Long-Distance Runner</span></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="k" data-i18n="contact.email">Email</div>
+        <div class="v"><a href="mailto:cyzhu18@fudan.edu.cn">cyzhu18@fudan.edu.cn</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="k">ORCID</div>
+        <div class="v"><a href="https://orcid.org/0000-0003-2132-2060" target="_blank" rel="noopener">0000-0003-2132-2060</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="k">GitHub</div>
+        <div class="v"><a href="https://github.com/ZhuChaoY" target="_blank" rel="noopener">github.com/ZhuChaoY</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="k" data-i18n="contact.phone">Phone</div>
+        <div class="v">+86-19145714254</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="sec" data-i18n="sec.experience">Experience</h2>
+    <div class="edu">
+      <span class="school-logo" style="background:#2f6f4f">LS<img src="Figures/Lishan logo.jpg" alt="Shanghai Lishan Biotech" onerror="this.remove()"></span>
+      <div class="yr">2025.07–Present</div>
+      <div class="body">
+        <div class="deg" data-i18n="exp.ls">Microbiomics Research</div>
+        <div class="inst" data-i18n="exp.lsInst">Bioinformatics Center, Shanghai Lishan Biotech Co., Ltd., Shanghai, China</div>
+      </div>
+    </div>
+    <div class="edu">
+      <span class="school-logo" style="background:#9e1b32">FDU<img src="Figures/Fudan logo.jpg" alt="Fudan University" onerror="this.remove()"></span>
+      <div class="yr">2023.07–2025.06</div>
+      <div class="body">
+        <div class="deg" data-i18n="exp.fdu">Postdoctoral Researcher in Intelligent Microbiomics</div>
+        <div class="inst" data-i18n="exp.fduInst">Institute of Intelligent Medicine, Fudan University, Shanghai, China</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 class="sec" data-i18n="sec.education">Education</h2>
+    <div class="edu">
+      <span class="school-logo" style="background:#9e1b32">FDU<img src="Figures/Fudan logo.jpg" alt="Fudan University" onerror="this.remove()"></span>
+      <div class="yr">2018.09–2023.06</div>
+      <div class="body">
+        <div class="deg" data-i18n="edu.fdu">Ph.D. in Medical Systems Biology</div>
+        <div class="inst" data-i18n="edu.fduInst">Institute of Biomedical Sciences, Fudan University, Shanghai, China</div>
+      </div>
+    </div>
+    <div class="edu">
+      <span class="school-logo" style="background:#003f8a">ECUST<img src="Figures/ECUST logo.jpg" alt="East China University of Science and Technology" onerror="this.remove()"></span>
+      <div class="yr">2014.09–2018.06</div>
+      <div class="body">
+        <div class="deg" data-i18n="edu.ecust">B.S. in Mathematics and Applied Mathematics</div>
+        <div class="inst" data-i18n="edu.ecustInst">School of Science, East China University of Science and Technology, Shanghai, China</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <h2 class="sec" data-i18n="sec.publications">Publications</h2>
+
+    <div class="stats">
+      <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="stat.h">H-index</div></div>
+      <div class="stat"><div class="num">8</div><div class="lbl" data-i18n="stat.papers">Papers</div></div>
+      <div class="stat"><div class="num">185</div><div class="lbl" data-i18n="stat.cites">Citations</div></div>
+      <div class="stat"><div class="num">5.0</div><div class="lbl" data-i18n="stat.if">Avg. Impact Factor</div></div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2026.04</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.3390/cancers18081190" target="_blank" rel="noopener">Ensemble Machine Learning Predicts Platinum Resistance in Ovarian Cancer Using Laboratory Data</a></p>
+        <p class="authors">X. Peng, Y. Zhang, <span class="me">C. Zhu</span>, W. Chen, X. Wu, F. Zhong, Q. Guo*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Cancers</i></span>
+          <span class="badge if">IF 4.8</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="1">Cited 1</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/42073517/" target="_blank" rel="noopener">PMID: 42073517</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2024.10</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.1186/s12915-024-02023-8" target="_blank" rel="noopener">TransCDR: A Deep Learning Model for Enhancing the Generalizability of Drug Activity Prediction Through Transfer Learning and Multimodal Data Fusion</a></p>
+        <p class="authors">X. Xia, <span class="me">C. Zhu</span>, F. Zhong*, L. Liu*</p>
+        <div class="meta">
+          <span><i>BMC Biology</i></span>
+          <span class="badge if">IF 5.4</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="29">Cited 29</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/39385185/" target="_blank" rel="noopener">PMID: 39385185</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2024.08</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.3390/bioengineering11080808" target="_blank" rel="noopener">Constructing a Clinical Patient Similarity Network of Gastric Cancer</a></p>
+        <p class="authors">R. Zhang, Z. Liu, <span class="me">C. Zhu</span>, H. Cai, K. Yin, F. Zhong*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Bioengineering</i></span>
+          <span class="badge if">IF 4.4</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="4">Cited 4</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/39199766/" target="_blank" rel="noopener">PMID: 39199766</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2023.09</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.1016/j.compbiomed.2023.107262" target="_blank" rel="noopener">RDKG-115: Assisting Drug Repurposing and Discovery for Rare Diseases by Trimodal Knowledge Graph Embedding</a></p>
+        <p class="authors"><span class="me">C. Zhu</span>, X. Xia, N. Li, F. Zhong*, Z. Yang*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Computers in Biology and Medicine</i></span>
+          <span class="badge first" data-i18n="pub.first">First author</span>
+          <span class="badge if">IF 6.3</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="15">Cited 15</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/37481946/" target="_blank" rel="noopener">PMID: 37481946</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2023.07</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.1093/bioinformatics/btad411" target="_blank" rel="noopener">MDTips: A Multimodal-Data Based Drug–Target Interaction Prediction System Fusing Knowledge, Gene Expression Profile and Structural Data</a></p>
+        <p class="authors">X. Xia, <span class="me">C. Zhu</span>, F. Zhong*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Bioinformatics</i></span>
+          <span class="badge if">IF 5.5</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="49">Cited 49</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/37379157/" target="_blank" rel="noopener">PMID: 37379157</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2022.04</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.1093/bioinformatics/btac085" target="_blank" rel="noopener">Multimodal Reasoning Based on Knowledge Graph Embedding for Specific Diseases</a></p>
+        <p class="authors"><span class="me">C. Zhu</span>, Z. Yang, X. Xia, N. Li, F. Zhong*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Bioinformatics</i></span>
+          <span class="badge first" data-i18n="pub.first">First author</span>
+          <span class="badge if">IF 5.5</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="73">Cited 73</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/35150235/" target="_blank" rel="noopener">PMID: 35150235</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2021.12</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.3390/genes12122018" target="_blank" rel="noopener">Attention-Based Deep Multiple-Instance Learning for Classifying Circular RNA and Other Long Non-Coding RNA</a></p>
+        <p class="authors">Y. Liu, Q. Fu, X. Peng, <span class="me">C. Zhu</span>, G. Liu*, L. Liu*</p>
+        <div class="meta">
+          <span><i>Genes</i></span>
+          <span class="badge if">IF 3.1</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="9">Cited 9</span>
+          <a class="badge pmid" href="https://pubmed.ncbi.nlm.nih.gov/34946967/" target="_blank" rel="noopener">PMID: 34946967</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr">2020.12</div>
+      <div class="body">
+        <p class="title"><a href="https://doi.org/10.11925/infotech.2096-3467.2020.0953" target="_blank" rel="noopener">基于知识图谱的医学决策支持应用综述</a></p>
+        <p class="authors"><span class="me">C. Zhu</span>, L. Liu*</p>
+        <div class="meta">
+          <span><i>数据分析与知识发现</i></span>
+          <span class="badge first" data-i18n="pub.first">First author</span>
+          <span class="badge review" data-i18n="pub.review">Review</span>
+          <span class="badge cite" data-i18n="pub.cited" data-i18n-arg="5">Cited 5</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr"><span class="badge forth" data-i18n="pub.forth">Forthcoming</span></div>
+      <div class="body">
+        <p class="title">Preclinical Profile and First-in-Human Clinical Evaluation in Healthy Adult Participants of a Swarming Bacterial Strain LS57 as a Potential Live Biotherapeutic Product for the Treatment of Inflammatory Bowel Disease</p>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="yr"><span class="badge forth" data-i18n="pub.forth">Forthcoming</span></div>
+      <div class="body">
+        <p class="title">IMicAP: An Intelligent Microbial Application Platform for Knowledge-Driven Microbiome Research</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // i18n dictionary
+  var I18N={
+    "nav.about":{en:"About",zh:"关于"},
+    "nav.experience":{en:"Experience",zh:"经历"},
+    "nav.education":{en:"Education",zh:"教育"},
+    "nav.publications":{en:"Publications",zh:"论文"},
+    "nav.updated":{en:"Last Updated: ",zh:"最近更新: "},
+    "hero.role":{en:"Biomedical Informatics | Intelligent Microbiomics",zh:"生物医学信息学 | 智能微生物组学"},
+    "hero.aff":{en:"Intelligent Medicine, Ph.D. & Postdoc, Fudan University",zh:"复旦大学智能医学 博士 & 博士后"},
+    "hero.tag1":{en:"Atheist",zh:"无神论者"},
+    "hero.tag2":{en:"Immune to Inspirational Quotes",zh:"鸡汤过敏"},
+    "hero.tag3":{en:"Amateur Long-Distance Runner",zh:"业余长跑爱好者"},
+    "contact.email":{en:"Email",zh:"Email"},
+    "contact.phone":{en:"Phone",zh:"Phone"},
+    "sec.experience":{en:"Experience",zh:"经历"},
+    "sec.education":{en:"Education",zh:"教育"},
+    "sec.publications":{en:"Publications",zh:"论文"},
+    "stat.h":{en:"H-index",zh:"H-index"},
+    "stat.papers":{en:"Papers",zh:"论文数"},
+    "stat.cites":{en:"Citations",zh:"引量次数"},
+    "stat.if":{en:"Avg. Impact Factor",zh:"平均影响因子"},
+    "pub.first":{en:"First author",zh:"一作"},
+    "pub.review":{en:"Review",zh:"综述"},
+    "pub.forth":{en:"Forthcoming",zh:"待发表"},
+    "pub.cited":{en:"Cited {n}",zh:"被引 {n}"},
+    "exp.ls":{en:"Intelligent Microbiomics Research",zh:"智能微生物组学 研究员"},
+    "exp.lsInst":{en:"Bioinformatics Center, Shanghai Lishan Biotech Co., Ltd., Shanghai, China",zh:"上海力山生物医药有限公司 生物信息中心，中国上海"},
+    "exp.fdu":{en:"Postdoctoral Researcher in Intelligent Microbiomics",zh:"智能微生物组学 博士后"},
+    "exp.fduInst":{en:"Institute of Intelligent Medicine, Fudan University, Shanghai, China",zh:"复旦大学智能医学研究院，中国上海"},
+    "edu.fdu":{en:"Ph.D. in Medical Systems Biology",zh:"医学系统生物学 博士"},
+    "edu.fduInst":{en:"Institute of Biomedical Sciences, Fudan University, Shanghai, China",zh:"复旦大学生物医学研究院，中国上海"},
+    "edu.ecust":{en:"B.S. in Mathematics and Applied Mathematics",zh:"数学与应用数学 学士"},
+    "edu.ecustInst":{en:"School of Science, East China University of Science and Technology, Shanghai, China",zh:"华东理工大学理学院，中国上海"}
+  };
+
+  // Language toggle (default English)
+  var lang=localStorage.getItem("lang")||"en";
+  var langBtn=document.getElementById("langToggle");
+  function applyLang(l){
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key=el.getAttribute("data-i18n");
+      var rec=I18N[key];
+      if(!rec) return;
+      var t=rec[l]!==undefined?rec[l]:rec.en;
+      var arg=el.getAttribute("data-i18n-arg");
+      if(arg!==null && t.indexOf("{n}")!==-1) t=t.replace("{n}",arg);
+      el.textContent=t;
+    });
+    langBtn.textContent = l==="en" ? "中文" : "EN";
+    localStorage.setItem("lang", l);
+  }
+  applyLang(lang);
+  langBtn.addEventListener("click", function(){ lang=(lang==="en"?"zh":"en"); applyLang(lang); });
+
+  // Dates
+  var m=new Date(document.lastModified);
+  var upd=isNaN(m)?"":m.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
+  document.getElementById("updated").textContent=upd;
+
+  // Theme toggle
+  var theme=localStorage.getItem("theme")||"light";
+  var themeBtn=document.getElementById("themeToggle");
+  function applyTheme(t){
+    document.documentElement.classList.toggle("theme-dark", t==="dark");
+    document.documentElement.classList.toggle("theme-light", t==="light");
+    themeBtn.textContent = t==="light" ? "🌙" : "☀️";
+    localStorage.setItem("theme", t);
+  }
+  applyTheme(theme);
+  themeBtn.addEventListener("click", function(){ theme = (theme==="light"?"dark":"light"); applyTheme(theme); });
+</script>
+</body>
+</html>
