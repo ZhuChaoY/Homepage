@@ -1,0 +1,5 @@
+# Local tools & workspace memory
+.workbuddy/
+
+# Private article files (not for public hosting)
+Articles/
