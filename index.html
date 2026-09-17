@@ -107,6 +107,7 @@
   }
   .stat .num{font-size:26px;font-weight:800;color:var(--accent)}
   .stat .lbl{font-size:13px;color:var(--text-mute);margin-top:2px}
+  .stat .src{font-size:11px;color:var(--text-mute);opacity:.72;margin-top:1px}
 
   /* Publications */
   .pub{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border)}
@@ -245,7 +246,7 @@
 
     <div class="stats">
       <div class="stat"><div class="num">8</div><div class="lbl" data-i18n="stat.papers">Papers</div></div>
-      <div class="stat"><div class="num">185</div><div class="lbl" data-i18n="stat.cites">Citations</div></div>
+      <div class="stat"><div class="num">185</div><div class="lbl" data-i18n="stat.cites">Citations</div><div class="src" data-i18n="stat.cites.src">Google Scholar</div></div>
       <div class="stat"><div class="num">5.1</div><div class="lbl" data-i18n="stat.if">Avg. Impact Factor</div></div>
       <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="stat.h">H-index</div></div>
     </div>
@@ -254,7 +255,7 @@
       <div class="yr">2026.09</div>
       <div class="body">
         <p class="title"><a href="https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2026.1955928/abstract" target="_blank" rel="noopener">IMicAP: An Intelligent Microbial Application Platform for Knowledge-Driven Microbiome Research</a></p>
-        <p class="authors"><span class="me">C. Zhu</span>, X. Wang, L. Feng, …, W. Chen*, L. Liu*</p>
+        <p class="authors"><span class="me">C. Zhu</span>, X. Wang, L. Feng, M. Xu, Z. Huang, W. Chen*, L. Liu*</p>
         <div class="meta">
           <span><i>Frontiers in Microbiology</i></span>
           <span class="badge first" data-i18n="pub.first">First author</span>
@@ -306,7 +307,7 @@
     </div>
 
     <div class="pub">
-      <div class="yr">2023.09</div>
+      <div class="yr">2023.07</div>
       <div class="body">
         <p class="title"><a href="https://doi.org/10.1016/j.compbiomed.2023.107262" target="_blank" rel="noopener">RDKG-115: Assisting Drug Repurposing and Discovery for Rare Diseases by Trimodal Knowledge Graph Embedding</a></p>
         <p class="authors"><span class="me">C. Zhu</span>, X. Xia, N. Li, F. Zhong*, Z. Yang*, L. Liu*</p>
@@ -335,7 +336,7 @@
     </div>
 
     <div class="pub">
-      <div class="yr">2022.04</div>
+      <div class="yr">2022.02</div>
       <div class="body">
         <p class="title"><a href="https://doi.org/10.1093/bioinformatics/btac085" target="_blank" rel="noopener">Multimodal Reasoning Based on Knowledge Graph Embedding for Specific Diseases</a></p>
         <p class="authors"><span class="me">C. Zhu</span>, Z. Yang, X. Xia, N. Li, F. Zhong*, L. Liu*</p>
@@ -394,6 +395,7 @@
     "stat.h":{en:"H-index",zh:"H-index"},
     "stat.papers":{en:"Papers",zh:"论文数"},
     "stat.cites":{en:"Citations",zh:"引用次数"},
+    "stat.cites.src":{en:"Google Scholar",zh:"谷歌学术"},
     "stat.if":{en:"Avg. Impact Factor",zh:"平均影响因子"},
     "pub.first":{en:"First author",zh:"一作"},
     "pub.review":{en:"Review",zh:"综述"},
